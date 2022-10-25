@@ -1,69 +1,24 @@
 extends layout
+include fonksiyonlar/yildiz
 block content
   #banner.page-header 
-      .row 
-          .col-lg-6 
-              h1 
-                  | MekanBul 
-                  small &nbsp; Civarınızdaki Mekanları Keşfedin!
+    .row 
+       .col-lg-6
+         h1 
+          |#{sayfaBaslik.siteAd}
+          small &nbsp; #{sayfaBaslik.silogan}
   .row 
-          .row.list-group 
-          .col-xs-12.col-sm-12 
-              .col-xs-12.list-group-item 
-                  h4 
-                      a(href='/mekan') Starbucks
-                      small &nbsp;
-                      span.glyphicon.glyphicon-star
-                      span.glyphicon.glyphicon-star
-                      span.glyphicon.glyphicon-star
-                      span.glyphicon.glyphicon-star-empty 
-                  span.badge.pull-right.badge-default 1 km 
-                  p.address SDÜ Batı Kampüsü
-                  p 
-                      span.label.label-warning Dünya Kahveleri
-                      | &nbsp;
-                      span.label.label-warning Kekler
-                      | &nbsp;
-                      span.label.label-warning Pastalar
-  .row 
-          .row.list-group 
-          .col-xs-12.col-sm-12 
-              .col-xs-12.list-group-item 
-                  h4 
-                      a(href='/mekan') Gramofon Cafe
-                      small &nbsp;
-                      span.glyphicon.glyphicon-star
-                      span.glyphicon.glyphicon-star
-                      span.glyphicon.glyphicon-star
-                      span.glyphicon.glyphicon-star-empty 
-                  span.badge.pull-right.badge-default 10 km 
-                  p.address Merkez Isparta
-                  p 
-                      span.label.label-warning Kahve
-                      | &nbsp;
-                      span.label.label-warning Yemek
-                      | &nbsp;
-                      span.label.label-warning Pastalar
-  .row 
-          .row.list-group 
-          .col-xs-12.col-sm-12 
-              .col-xs-12.list-group-item 
-                  h4 
-                      a(href='/mekan') Gloria Jean's
-                      small &nbsp;
-                      span.glyphicon.glyphicon-star
-                      span.glyphicon.glyphicon-star
-                      span.glyphicon.glyphicon-star
-                      span.glyphicon.glyphicon-star-empty 
-                  span.badge.pull-right.badge-default 1 km 
-                  p.address Merkez Isparta
-                  p 
-                      span.label.label-warning Kahve
-                      | &nbsp;
-                      span.label.label-warning Tatlı
-                      | &nbsp;
-                             
-
-
-
-
+      each mekan in mekanlar
+           .row.list-group 
+           .col-xs-12.col-sm-12 
+               .col-xs-12.list-group-item
+                    h4 
+                       a(href='/mekan') #{mekan.ad} 
+                       small &nbsp;
+                       +puanOlustur(mekan.puan)
+                    span.badge.pull-right.badge-default #{mekan.mesafe}
+                    p.address #{mekan.adres}
+                    p
+                        each imkan in mekan.imkanlar
+                             span.label.label-warning #{imkan} 
+                             | &nbsp;
