@@ -1,0 +1,14 @@
+db.mekanlar.updateOne(
+  {"ad":"Starbucks"},
+  {$push:
+  {"yorumlar":{
+      "_id":ObjectId(),
+      "yorumYapan":"Ali",
+      "puan":5,
+      "yorumMetni":"Kahveler hariha",
+      "tarih":new Date()
+
+    }}
+  }  
+)
+"yorumlar"
