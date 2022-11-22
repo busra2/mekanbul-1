@@ -1,0 +1,14 @@
+const database = 'mekanbul';
+use(database);
+db.mekanlar.updateOne({"ad":"Starbucks"},
+  {$push: {"yorumlar": 
+    {
+      "_id": ObjectId(),
+      "yorumYapan": "Veli",
+      "puan": 5,
+      "yorumMetni": "Kahveler harika",
+      "tarih": new Date()
+    }
+  }
+}
+)
