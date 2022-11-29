@@ -121,7 +121,7 @@ const mekanEkle = function (req, res) {
     Mekan.create({
         ad:req.body.ad,
         adres:req.body.adres,
-        imkanlar:req.body.imkanlar.split(' '),
+        imkanlar:req.body.imkanlar.split(","),
         koordinat:[parseFloat(req.body.enlem),parseFloat(req.body.boylam)],
         saatler:[
             {
@@ -154,7 +154,7 @@ const mekanSil = function (req, res) {
                 cevapOlustur(res, 404, hata);
                 return;
             }
-            cevapOlustur(res, 200, { "durum": "Mekan Silindi!", "Silinen Mekan": gelenMekan.ad });
+            cevapOlustur(res, 200, { "durum": "Mekan Silindi!", "Silinen Mekan": gelenMekan.ad});
         });
     }
     else {
