@@ -7,3 +7,10 @@
 3.[Mekan ID İLe Mekan Bilgileri Getir](https://mekanbul-1-1.busrakemter.repl.co/api/mekanlar/637cf9ce26807a2e0b4a2b7b)
 ![Mekan Getir](https://user-images.githubusercontent.com/115122063/203384721-0ef5bf56-3555-4f69-9bfb-52e88f4c85f9.png)
 
+# API TEST 29.09.2022
+
+![test](https://user-images.githubusercontent.com/115122063/204535694-799675c2-eb73-4b13-9878-2dcb7f27f4f7.png)
+
+# API COLLECTIONS TEST 29.09.2022
+
+![apı](https://user-images.githubusercontent.com/115122063/204535833-3d0c551d-bf01-4f09-a0f5-62b23bb8f709.png)
