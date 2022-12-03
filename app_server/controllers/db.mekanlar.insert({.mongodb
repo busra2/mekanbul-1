@@ -1,6 +1,6 @@
 db.mekanlar.insert({
 
-      "ad": "Starbucks",
+      "ad": "Mackbear",
      " puan" : "4",
       "adres": "Centrum Garden AVM",
       "saatler": [
@@ -24,13 +24,11 @@ db.mekanlar.insert({
       },
       "yorumlar": [
         {
-          "yorumYapan": "Şevval Badıllı",
-          "yorumMetni": "Kahveler iyi.",
+          "yorumYapan": "Ahmet Tokgöz",
+          "yorumMetni": "Kahveler iyi.Ferah bir mekan ",
           "tarih": "20 Ekim 2022",
           "puan": "4",
         },
       ],
     },
   );
-
-

@@ -2,14 +2,14 @@
   "stats": {
     "suites": 9,
     "tests": 9,
-    "passes": 9,
+    "passes": 0,
     "pending": 0,
-    "failures": 0,
-    "start": "2022-11-29T10:30:57.275Z",
-    "end": "2022-11-29T10:30:57.906Z",
-    "duration": 631,
+    "failures": 9,
+    "start": "2022-12-03T20:05:21.320Z",
+    "end": "2022-12-03T20:05:21.426Z",
+    "duration": 106,
     "testsRegistered": 9,
-    "passPercent": 100,
+    "passPercent": 0,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "2c2a3f0c-e495-4bd2-82c9-dbdc692b7702",
+      "uuid": "2b551ad7-5b77-4f91-8f9b-9fcbcfe49094",
       "title": "",
       "fullFile": "",
       "file": "",
@@ -28,7 +28,7 @@
           "title": "\"after all\" hook in \"{root}\"",
           "fullTitle": "\"after all\" hook in \"{root}\"",
           "timedOut": false,
-          "duration": 0,
+          "duration": 1,
           "state": null,
           "speed": null,
           "pass": false,
@@ -37,8 +37,8 @@
           "context": null,
           "code": "done();",
           "err": {},
-          "uuid": "7ee276cf-a8ee-4ebe-8fd8-ee5dbf996b29",
-          "parentUUID": "2c2a3f0c-e495-4bd2-82c9-dbdc692b7702",
+          "uuid": "0af8f3a8-3b3d-4e5f-8342-2dcf4770b09e",
+          "parentUUID": "2b551ad7-5b77-4f91-8f9b-9fcbcfe49094",
           "isHook": true,
           "skipped": false
         }
@@ -46,7 +46,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "30cbce43-5c28-456c-b903-9c46554219c0",
+          "uuid": "72de6d4d-1a93-4a99-8525-6c624b0ac1d5",
           "title": "POST /api/mekanlar",
           "fullFile": "/Users/busra/Desktop/mekanbul-1/test.js",
           "file": "/test.js",
@@ -57,35 +57,39 @@
               "title": "Yeni mekan ekle:",
               "fullTitle": "POST /api/mekanlar Yeni mekan ekle:",
               "timedOut": false,
-              "duration": 165,
-              "state": "passed",
-              "speed": "slow",
-              "pass": true,
-              "fail": false,
+              "duration": 26,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
               "pending": false,
               "context": null,
               "code": "const response = await request.post(\"/api/mekanlar\").send({\n  ad: \"Starbucks\",\n  adres: \"Centrum Garden\",\n  puan: 5,\n  imkanlar: \"çay,kahve,pasta\",\n  enlem: 37.83226584629666,\n  boylam: 30.524732239878013,\n  gunler1: \"Pazartesi-Cuma\",\n  acilis1: \"9:00\",\n  kapanis1: \"23:00\",\n  kapali1: false,\n  gunler2: \"Cumartesi-Pazar\",\n  acilis2: \"11:00\",\n  kapanis2: \"17:00\",\n  kapali2: false,\n});\nexpect(response.status).to.eql(201);\nprocess.env.mekanid = response.body._id;",
-              "err": {},
-              "uuid": "5f35a67f-4119-4c76-bb62-4ccf2e24526c",
-              "parentUUID": "30cbce43-5c28-456c-b903-9c46554219c0",
+              "err": {
+                "message": "Error: ECONNREFUSED: Connection refused",
+                "estack": "Error: ECONNREFUSED: Connection refused\n    at Test.assert (node_modules/supertest/lib/test.js:156:20)\n    at localAssert (node_modules/supertest/lib/test.js:120:14)\n    at /Users/busra/Desktop/mekanbul-1/node_modules/supertest/lib/test.js:125:7\n    at Test.Request.callback (node_modules/superagent/lib/node/index.js:866:3)\n    at ClientRequest.<anonymous> (node_modules/superagent/lib/node/index.js:788:10)\n    at ClientRequest.emit (node:events:513:28)\n    at Socket.socketErrorListener (node:_http_client:481:9)\n    at Socket.emit (node:events:513:28)\n    at emitErrorNT (node:internal/streams/destroy:157:8)\n    at emitErrorCloseNT (node:internal/streams/destroy:122:3)\n    at processTicksAndRejections (node:internal/process/task_queues:83:21)",
+                "diff": null
+              },
+              "uuid": "dc59033f-3cbd-4b20-982e-1eb86f714abf",
+              "parentUUID": "72de6d4d-1a93-4a99-8525-6c624b0ac1d5",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
-          "passes": [
-            "5f35a67f-4119-4c76-bb62-4ccf2e24526c"
+          "passes": [],
+          "failures": [
+            "dc59033f-3cbd-4b20-982e-1eb86f714abf"
           ],
-          "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 165,
+          "duration": 26,
           "root": false,
           "rootEmpty": false,
           "_timeout": 10000
         },
         {
-          "uuid": "69bbc214-0169-4217-8413-0f77349ed113",
+          "uuid": "82c568f6-8f2e-41dd-aca4-b5728eecd72d",
           "title": "GET /api/mekanlar",
           "fullFile": "/Users/busra/Desktop/mekanbul-1/test.js",
           "file": "/test.js",
@@ -96,35 +100,39 @@
               "title": "Girilen konum civarındaki tüm mekanları listele:",
               "fullTitle": "GET /api/mekanlar Girilen konum civarındaki tüm mekanları listele:",
               "timedOut": false,
-              "duration": 121,
-              "state": "passed",
-              "speed": "slow",
-              "pass": true,
-              "fail": false,
+              "duration": 4,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
               "pending": false,
               "context": null,
               "code": "const response = await request.get(\"/api/mekanlar?enlem=37&boylam=35\");\nexpect(response.status).to.eql(200);",
-              "err": {},
-              "uuid": "d5f2c551-42fa-4c25-a299-2d81c4e49af1",
-              "parentUUID": "69bbc214-0169-4217-8413-0f77349ed113",
+              "err": {
+                "message": "Error: ECONNREFUSED: Connection refused",
+                "estack": "Error: ECONNREFUSED: Connection refused\n    at Test.assert (node_modules/supertest/lib/test.js:156:20)\n    at localAssert (node_modules/supertest/lib/test.js:120:14)\n    at /Users/busra/Desktop/mekanbul-1/node_modules/supertest/lib/test.js:125:7\n    at Test.Request.callback (node_modules/superagent/lib/node/index.js:866:3)\n    at ClientRequest.<anonymous> (node_modules/superagent/lib/node/index.js:788:10)\n    at ClientRequest.emit (node:events:513:28)\n    at Socket.socketErrorListener (node:_http_client:481:9)\n    at Socket.emit (node:events:513:28)\n    at emitErrorNT (node:internal/streams/destroy:157:8)\n    at emitErrorCloseNT (node:internal/streams/destroy:122:3)\n    at processTicksAndRejections (node:internal/process/task_queues:83:21)",
+                "diff": null
+              },
+              "uuid": "275f7867-53b4-4403-bb5e-e1bb6eca0ff1",
+              "parentUUID": "82c568f6-8f2e-41dd-aca4-b5728eecd72d",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
-          "passes": [
-            "d5f2c551-42fa-4c25-a299-2d81c4e49af1"
+          "passes": [],
+          "failures": [
+            "275f7867-53b4-4403-bb5e-e1bb6eca0ff1"
           ],
-          "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 121,
+          "duration": 4,
           "root": false,
           "rootEmpty": false,
           "_timeout": 10000
         },
         {
-          "uuid": "0c366674-ff70-4527-953a-55f431545726",
+          "uuid": "ce2fabaa-da2f-4c20-8a8a-79a2cdf2a833",
           "title": "GET /api/mekanlar/:mekanid",
           "fullFile": "/Users/busra/Desktop/mekanbul-1/test.js",
           "file": "/test.js",
@@ -135,35 +143,39 @@
               "title": "Mekan getir:",
               "fullTitle": "GET /api/mekanlar/:mekanid Mekan getir:",
               "timedOut": false,
-              "duration": 36,
-              "state": "passed",
-              "speed": "fast",
-              "pass": true,
-              "fail": false,
+              "duration": 2,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
               "pending": false,
               "context": null,
               "code": "const response = await request.get(`/api/mekanlar/${process.env.mekanid}`);\nexpect(response.status).to.eql(200);",
-              "err": {},
-              "uuid": "bb43eb49-a5a0-4cc6-b417-3231b7521395",
-              "parentUUID": "0c366674-ff70-4527-953a-55f431545726",
+              "err": {
+                "message": "Error: ECONNREFUSED: Connection refused",
+                "estack": "Error: ECONNREFUSED: Connection refused\n    at Test.assert (node_modules/supertest/lib/test.js:156:20)\n    at localAssert (node_modules/supertest/lib/test.js:120:14)\n    at /Users/busra/Desktop/mekanbul-1/node_modules/supertest/lib/test.js:125:7\n    at Test.Request.callback (node_modules/superagent/lib/node/index.js:866:3)\n    at ClientRequest.<anonymous> (node_modules/superagent/lib/node/index.js:788:10)\n    at ClientRequest.emit (node:events:513:28)\n    at Socket.socketErrorListener (node:_http_client:481:9)\n    at Socket.emit (node:events:513:28)\n    at emitErrorNT (node:internal/streams/destroy:157:8)\n    at emitErrorCloseNT (node:internal/streams/destroy:122:3)\n    at processTicksAndRejections (node:internal/process/task_queues:83:21)",
+                "diff": null
+              },
+              "uuid": "c130bdd2-2e99-4373-9d23-acdefbb3d145",
+              "parentUUID": "ce2fabaa-da2f-4c20-8a8a-79a2cdf2a833",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
-          "passes": [
-            "bb43eb49-a5a0-4cc6-b417-3231b7521395"
+          "passes": [],
+          "failures": [
+            "c130bdd2-2e99-4373-9d23-acdefbb3d145"
           ],
-          "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 36,
+          "duration": 2,
           "root": false,
           "rootEmpty": false,
           "_timeout": 10000
         },
         {
-          "uuid": "909144ce-c25c-471d-85d9-f624b23f5b7e",
+          "uuid": "e73b0563-cbc7-4566-90aa-ca9bbe13f412",
           "title": "PUT /api/mekanlar/:mekanid",
           "fullFile": "/Users/busra/Desktop/mekanbul-1/test.js",
           "file": "/test.js",
@@ -174,35 +186,39 @@
               "title": "Mekan Güncelle:",
               "fullTitle": "PUT /api/mekanlar/:mekanid Mekan Güncelle:",
               "timedOut": false,
-              "duration": 98,
-              "state": "passed",
-              "speed": "slow",
-              "pass": true,
-              "fail": false,
+              "duration": 4,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
               "pending": false,
               "context": null,
               "code": "const response = await request\n  .put(`/api/mekanlar/${process.env.mekanid}`)\n  .send({\n    ad: \"Starbucks SDÜ\",\n    adres: \"SDÜ Doğu Kampüsü\",\n    puan: 3,\n    imkanlar: \"çay,kahve,pasta,refresher\",\n    enlem: 37.8,\n    boylam: 30.5,\n    gunler1: \"Pazartesi-Cuma\",\n    acilis1: \"9:10\",\n    kapanis1: \"23:10\",\n    kapali1: true,\n    gunler2: \"Cumartesi-Pazar\",\n    acilis2: \"11:10\",\n    kapanis2: \"17:10\",\n    kapali2: true,\n  });\nexpect(response.status).to.eql(200);",
-              "err": {},
-              "uuid": "b021f35c-c513-409b-b035-b580b9965c54",
-              "parentUUID": "909144ce-c25c-471d-85d9-f624b23f5b7e",
+              "err": {
+                "message": "Error: ECONNREFUSED: Connection refused",
+                "estack": "Error: ECONNREFUSED: Connection refused\n    at Test.assert (node_modules/supertest/lib/test.js:156:20)\n    at localAssert (node_modules/supertest/lib/test.js:120:14)\n    at /Users/busra/Desktop/mekanbul-1/node_modules/supertest/lib/test.js:125:7\n    at Test.Request.callback (node_modules/superagent/lib/node/index.js:866:3)\n    at ClientRequest.<anonymous> (node_modules/superagent/lib/node/index.js:788:10)\n    at ClientRequest.emit (node:events:513:28)\n    at Socket.socketErrorListener (node:_http_client:481:9)\n    at Socket.emit (node:events:513:28)\n    at emitErrorNT (node:internal/streams/destroy:157:8)\n    at emitErrorCloseNT (node:internal/streams/destroy:122:3)\n    at processTicksAndRejections (node:internal/process/task_queues:83:21)",
+                "diff": null
+              },
+              "uuid": "9d4f5b73-28fa-4a0b-b4cb-476111196b59",
+              "parentUUID": "e73b0563-cbc7-4566-90aa-ca9bbe13f412",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
-          "passes": [
-            "b021f35c-c513-409b-b035-b580b9965c54"
+          "passes": [],
+          "failures": [
+            "9d4f5b73-28fa-4a0b-b4cb-476111196b59"
           ],
-          "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 98,
+          "duration": 4,
           "root": false,
           "rootEmpty": false,
           "_timeout": 10000
         },
         {
-          "uuid": "067615d7-1511-4833-b398-b5d99277b441",
+          "uuid": "b11ec1a4-615e-46f3-93fe-b66ec1c17733",
           "title": "POST /api/mekanlar/:mekanid/yorumlar",
           "fullFile": "/Users/busra/Desktop/mekanbul-1/test.js",
           "file": "/test.js",
@@ -213,35 +229,39 @@
               "title": "Yorum ekle:",
               "fullTitle": "POST /api/mekanlar/:mekanid/yorumlar Yorum ekle:",
               "timedOut": false,
-              "duration": 77,
-              "state": "passed",
-              "speed": "slow",
-              "pass": true,
-              "fail": false,
+              "duration": 5,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
               "pending": false,
               "context": null,
               "code": "const response = await request\n  .post(`/api/mekanlar/${process.env.mekanid}/yorumlar`)\n  .send({\n    yorumYapan: \"ASY\",\n    puan: 5,\n    yorumMetni: \"Kahveler harika\",\n  });\nprocess.env.yorumid = response.body._id;\nexpect(response.status).to.eql(201);",
-              "err": {},
-              "uuid": "53a22abe-4ae3-4ad1-894f-733e57e169bc",
-              "parentUUID": "067615d7-1511-4833-b398-b5d99277b441",
+              "err": {
+                "message": "Error: ECONNREFUSED: Connection refused",
+                "estack": "Error: ECONNREFUSED: Connection refused\n    at Test.assert (node_modules/supertest/lib/test.js:156:20)\n    at localAssert (node_modules/supertest/lib/test.js:120:14)\n    at /Users/busra/Desktop/mekanbul-1/node_modules/supertest/lib/test.js:125:7\n    at Test.Request.callback (node_modules/superagent/lib/node/index.js:866:3)\n    at ClientRequest.<anonymous> (node_modules/superagent/lib/node/index.js:788:10)\n    at ClientRequest.emit (node:events:513:28)\n    at Socket.socketErrorListener (node:_http_client:481:9)\n    at Socket.emit (node:events:513:28)\n    at emitErrorNT (node:internal/streams/destroy:157:8)\n    at emitErrorCloseNT (node:internal/streams/destroy:122:3)\n    at processTicksAndRejections (node:internal/process/task_queues:83:21)",
+                "diff": null
+              },
+              "uuid": "44cd9a48-279c-4d3a-8dc6-62b1f1fa6fc6",
+              "parentUUID": "b11ec1a4-615e-46f3-93fe-b66ec1c17733",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
-          "passes": [
-            "53a22abe-4ae3-4ad1-894f-733e57e169bc"
+          "passes": [],
+          "failures": [
+            "44cd9a48-279c-4d3a-8dc6-62b1f1fa6fc6"
           ],
-          "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 77,
+          "duration": 5,
           "root": false,
           "rootEmpty": false,
           "_timeout": 10000
         },
         {
-          "uuid": "b3b4dc82-ba93-463c-88be-3553bccc2b00",
+          "uuid": "795e8422-bec6-4e14-bc57-ea55f2fbde79",
           "title": "GET /api/mekanlar/:mekanid/yorumlar/:yorumid",
           "fullFile": "/Users/busra/Desktop/mekanbul-1/test.js",
           "file": "/test.js",
@@ -252,35 +272,39 @@
               "title": "Yorum getir:",
               "fullTitle": "GET /api/mekanlar/:mekanid/yorumlar/:yorumid Yorum getir:",
               "timedOut": false,
-              "duration": 33,
-              "state": "passed",
-              "speed": "fast",
-              "pass": true,
-              "fail": false,
+              "duration": 5,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
               "pending": false,
               "context": null,
               "code": "const response = await request.get(\n  `/api/mekanlar/${process.env.mekanid}/yorumlar/${process.env.yorumid}`\n);\nexpect(response.status).to.eql(200);",
-              "err": {},
-              "uuid": "988ac0da-4d13-4cde-9401-70c36284ead3",
-              "parentUUID": "b3b4dc82-ba93-463c-88be-3553bccc2b00",
+              "err": {
+                "message": "Error: ECONNREFUSED: Connection refused",
+                "estack": "Error: ECONNREFUSED: Connection refused\n    at Test.assert (node_modules/supertest/lib/test.js:156:20)\n    at localAssert (node_modules/supertest/lib/test.js:120:14)\n    at /Users/busra/Desktop/mekanbul-1/node_modules/supertest/lib/test.js:125:7\n    at Test.Request.callback (node_modules/superagent/lib/node/index.js:866:3)\n    at ClientRequest.<anonymous> (node_modules/superagent/lib/node/index.js:788:10)\n    at ClientRequest.emit (node:events:513:28)\n    at Socket.socketErrorListener (node:_http_client:481:9)\n    at Socket.emit (node:events:513:28)\n    at emitErrorNT (node:internal/streams/destroy:157:8)\n    at emitErrorCloseNT (node:internal/streams/destroy:122:3)\n    at processTicksAndRejections (node:internal/process/task_queues:83:21)",
+                "diff": null
+              },
+              "uuid": "85645a82-5042-48a7-95f9-8fa6b56674d0",
+              "parentUUID": "795e8422-bec6-4e14-bc57-ea55f2fbde79",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
-          "passes": [
-            "988ac0da-4d13-4cde-9401-70c36284ead3"
+          "passes": [],
+          "failures": [
+            "85645a82-5042-48a7-95f9-8fa6b56674d0"
           ],
-          "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 33,
+          "duration": 5,
           "root": false,
           "rootEmpty": false,
           "_timeout": 10000
         },
         {
-          "uuid": "ed853979-5573-4421-94c3-828ef58910a1",
+          "uuid": "f4f76d1c-2efe-4c20-9d13-ad018afa8ef1",
           "title": "PUT /api/mekanlar/:mekanid/yorumlar/:yorumid",
           "fullFile": "/Users/busra/Desktop/mekanbul-1/test.js",
           "file": "/test.js",
@@ -291,35 +315,39 @@
               "title": "Yorum güncelle:",
               "fullTitle": "PUT /api/mekanlar/:mekanid/yorumlar/:yorumid Yorum güncelle:",
               "timedOut": false,
-              "duration": 16,
-              "state": "passed",
-              "speed": "fast",
-              "pass": true,
-              "fail": false,
+              "duration": 6,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
               "pending": false,
               "context": null,
               "code": "const response = await request\n  .put(\n    `/api/mekanlar/${process.env.mekanid}/yorumlar/${process.env.yorumid}`\n  )\n  .send({\n    yorumYapan: \"Sinan\",\n    puan: 4,\n    yorumMetni: \"Kahveler harikaaaa\",\n  });\nexpect(response.status).to.eql(200);",
-              "err": {},
-              "uuid": "b4bfbc9c-322e-4d0c-9a25-4812f0ddf168",
-              "parentUUID": "ed853979-5573-4421-94c3-828ef58910a1",
+              "err": {
+                "message": "Error: ECONNREFUSED: Connection refused",
+                "estack": "Error: ECONNREFUSED: Connection refused\n    at Test.assert (node_modules/supertest/lib/test.js:156:20)\n    at localAssert (node_modules/supertest/lib/test.js:120:14)\n    at /Users/busra/Desktop/mekanbul-1/node_modules/supertest/lib/test.js:125:7\n    at Test.Request.callback (node_modules/superagent/lib/node/index.js:866:3)\n    at ClientRequest.<anonymous> (node_modules/superagent/lib/node/index.js:788:10)\n    at ClientRequest.emit (node:events:513:28)\n    at Socket.socketErrorListener (node:_http_client:481:9)\n    at Socket.emit (node:events:513:28)\n    at emitErrorNT (node:internal/streams/destroy:157:8)\n    at emitErrorCloseNT (node:internal/streams/destroy:122:3)\n    at processTicksAndRejections (node:internal/process/task_queues:83:21)",
+                "diff": null
+              },
+              "uuid": "ce1cfa0d-3539-4b16-beee-f1de5aa724ec",
+              "parentUUID": "f4f76d1c-2efe-4c20-9d13-ad018afa8ef1",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
-          "passes": [
-            "b4bfbc9c-322e-4d0c-9a25-4812f0ddf168"
+          "passes": [],
+          "failures": [
+            "ce1cfa0d-3539-4b16-beee-f1de5aa724ec"
           ],
-          "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 16,
+          "duration": 6,
           "root": false,
           "rootEmpty": false,
           "_timeout": 10000
         },
         {
-          "uuid": "f83c0e09-5304-4ab7-a8d6-f75441c0df6a",
+          "uuid": "c314fe9a-4438-4060-9456-7df69e37a148",
           "title": "DELETE /api/mekanlar/:mekanid/yorumlar/:yorumid",
           "fullFile": "/Users/busra/Desktop/mekanbul-1/test.js",
           "file": "/test.js",
@@ -330,35 +358,39 @@
               "title": "Yorum sil:",
               "fullTitle": "DELETE /api/mekanlar/:mekanid/yorumlar/:yorumid Yorum sil:",
               "timedOut": false,
-              "duration": 27,
-              "state": "passed",
-              "speed": "fast",
-              "pass": true,
-              "fail": false,
+              "duration": 5,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
               "pending": false,
               "context": null,
               "code": "const response = await request.delete(\n  `/api/mekanlar/${process.env.mekanid}/yorumlar/${process.env.yorumid}`\n);\nexpect(response.status).to.eql(200);",
-              "err": {},
-              "uuid": "d4637603-3ee1-4ce3-b648-f27952036e06",
-              "parentUUID": "f83c0e09-5304-4ab7-a8d6-f75441c0df6a",
+              "err": {
+                "message": "Error: ECONNREFUSED: Connection refused",
+                "estack": "Error: ECONNREFUSED: Connection refused\n    at Test.assert (node_modules/supertest/lib/test.js:156:20)\n    at localAssert (node_modules/supertest/lib/test.js:120:14)\n    at /Users/busra/Desktop/mekanbul-1/node_modules/supertest/lib/test.js:125:7\n    at Test.Request.callback (node_modules/superagent/lib/node/index.js:866:3)\n    at ClientRequest.<anonymous> (node_modules/superagent/lib/node/index.js:788:10)\n    at ClientRequest.emit (node:events:513:28)\n    at Socket.socketErrorListener (node:_http_client:481:9)\n    at Socket.emit (node:events:513:28)\n    at emitErrorNT (node:internal/streams/destroy:157:8)\n    at emitErrorCloseNT (node:internal/streams/destroy:122:3)\n    at processTicksAndRejections (node:internal/process/task_queues:83:21)",
+                "diff": null
+              },
+              "uuid": "90b78b7d-275a-49c7-a692-37afb0f8b939",
+              "parentUUID": "c314fe9a-4438-4060-9456-7df69e37a148",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
-          "passes": [
-            "d4637603-3ee1-4ce3-b648-f27952036e06"
+          "passes": [],
+          "failures": [
+            "90b78b7d-275a-49c7-a692-37afb0f8b939"
           ],
-          "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 27,
+          "duration": 5,
           "root": false,
           "rootEmpty": false,
           "_timeout": 10000
         },
         {
-          "uuid": "99634cf8-b5e6-4f54-8c2c-516bcab2c4d8",
+          "uuid": "3d19a86e-32ae-443e-a511-cfc50d034b27",
           "title": "DELETE /api/mekanlar/:mekanid",
           "fullFile": "/Users/busra/Desktop/mekanbul-1/test.js",
           "file": "/test.js",
@@ -369,29 +401,33 @@
               "title": "Mekan sil:",
               "fullTitle": "DELETE /api/mekanlar/:mekanid Mekan sil:",
               "timedOut": false,
-              "duration": 22,
-              "state": "passed",
-              "speed": "fast",
-              "pass": true,
-              "fail": false,
+              "duration": 7,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
               "pending": false,
               "context": null,
               "code": "const response = await request.delete(\n  `/api/mekanlar/${process.env.mekanid}`\n);\nexpect(response.status).to.eql(200);",
-              "err": {},
-              "uuid": "c47a3206-0d61-439e-aff4-1bddd62170c4",
-              "parentUUID": "99634cf8-b5e6-4f54-8c2c-516bcab2c4d8",
+              "err": {
+                "message": "Error: ECONNREFUSED: Connection refused",
+                "estack": "Error: ECONNREFUSED: Connection refused\n    at Test.assert (node_modules/supertest/lib/test.js:156:20)\n    at localAssert (node_modules/supertest/lib/test.js:120:14)\n    at /Users/busra/Desktop/mekanbul-1/node_modules/supertest/lib/test.js:125:7\n    at Test.Request.callback (node_modules/superagent/lib/node/index.js:866:3)\n    at ClientRequest.<anonymous> (node_modules/superagent/lib/node/index.js:788:10)\n    at ClientRequest.emit (node:events:513:28)\n    at Socket.socketErrorListener (node:_http_client:481:9)\n    at Socket.emit (node:events:513:28)\n    at emitErrorNT (node:internal/streams/destroy:157:8)\n    at emitErrorCloseNT (node:internal/streams/destroy:122:3)\n    at processTicksAndRejections (node:internal/process/task_queues:83:21)",
+                "diff": null
+              },
+              "uuid": "22dc37db-ae9a-41d0-9e47-154c5b542d20",
+              "parentUUID": "3d19a86e-32ae-443e-a511-cfc50d034b27",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
-          "passes": [
-            "c47a3206-0d61-439e-aff4-1bddd62170c4"
+          "passes": [],
+          "failures": [
+            "22dc37db-ae9a-41d0-9e47-154c5b542d20"
           ],
-          "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 22,
+          "duration": 7,
           "root": false,
           "rootEmpty": false,
           "_timeout": 10000

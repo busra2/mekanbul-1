@@ -1,56 +1,58 @@
 extends layout
 include fonksiyonlar/yildiz
+include fonksiyonlar/tarihformat
 block content
-  .row.page-header 
-    .col-lg-12 
-      h1= mekanBaslik 
-  .row 
-    .col-xs-12.col-md-12 
-      .row 
-        .col-xs-12.col-sm-6 
-          p.rating 
+  .row.page-header
+    .col-lg-12
+      h1= mekanBaslik
+  .row
+    .col-xs-12.col-md-12
+      .row
+        .col-xs-12.col-sm-6
+          p.rating
             +puanOlustur(mekanDetay.puan)
-          p= mekanDetay.adres 
-          .panel.panel-primary 
-            .panel-heading 
-              h2.panel-title Açılış Saatleri 
+          p= mekanDetay.adres
+          .panel.panel-primary
+            .panel-heading
+              h2.panel-title Açılış Saatleri
             .panel-body
-              each saat in mekanDetay.saatler 
+              each saat in mekanDetay.saatler
                 p 
-                | #{saat.gunler}:&nbsp;
-                if (saat.kapali)
-                  | kapalı
-                else
-                  |  #{saat.acilis}-#{saat.kapanis} 
-          .panel.panel-primary  
-            .panel-heading 
-              h2.panel-title Neler Var
+                  | #{saat.gunler}:&nbsp;
+                  if (saat.kapali)
+                    | Kapalı
+                  else 
+                    | #{saat.acilis}-#{saat.kapanis}
+          .panel.panel-primary
+            .panel-heading
+              h2.panel-title Neler Var?
             .panel-body
-              each imkan in mekanDetay.imkanlar 
-                span.label.label-warning= imkan 
-                | &nbsp; 
-        .col-xs-12.col-sm-6 
+              each imkan in mekanDetay.imkanlar
+                span.label.label-warning= imkan
+                | &nbsp;
+        .col-xs-12.col-sm-6
           .panel.panel-primary 
-            .panel-heading  
-              h2.panel-title Konum Bilgisi
+            .panel-heading
+              h2.panel-title Konum Bilgisi 
             .panel-body 
-              -var enlem=mekanDetay.koordinatlar.enlem
-              -var boylam=mekanDetay.koordinatlar.boylam
+              -var enlem=mekanDetay.koordinat.enlem
+              -var boylam=mekanDetay.koordinat.boylam
               img.img-responsive.img-rounded(src='http://maps.googleapis.com/maps/api/staticmap?center='+enlem+','+boylam+'&zoom=12&size=600x400&markers='+enlem+','+boylam+'&key=AIzaSyCmmKygTpBzHGOZEciJpAdxC9v_tWHagnE')
-  .row 
-     .col-xs-12 
-       .panel.panel-primary
-         .panel-heading
-           a.btn.btn-default.pull-right(href="/mekan/yorum/yeni") Yorum Ekle
-           h2.panel-title Müşteri Yorumları
-         .panel-body.review-container 
-           each yorum in mekanDetay.yorumlar
-             .row 
-               .review 
-                 .well.well-sm.review-header 
-                   span.rating
-                     +puanOlustur(yorum.puan)
-                   span.review-author= yorum.yorumYapan
-                   small.reviewTimestamp &nbsp; #{yorum.tarih}
-                 .col-xs-12
-                   p= yorum.yorumMetni 
+    .row
+      .col-xs-12 
+        .panel.panel-primary
+          .panel-heading
+            a.btn.btn-default.pull-right(href='/mekan/yorum/yeni') Yorum Ekle
+            h2.panel-title Müşteri Yorumları
+          .panel-body.review-container
+            each yorum in mekanDetay.yorumlar
+              .row 
+                .review 
+                  .well.well-sm.review-header
+                    span.rating
+                      +puanOlustur(yorum.puan)
+                    span.review-author= yorum.yorumYapan
+                    small.reviewTimesTamp &nbsp;
+                    +tarihFormatla(yorum.tarih)
+                  .col-xs-12
+                    p= yorum.yorumMetni
