@@ -1,34 +1,107 @@
-//var express = require('express');
-//var router = express.Router();
+var express = require("express");
+var router = express.Router();
+const axios = require("axios");
 
-//anaSayfa controller metodu 
-// index.js dosyasındaki router.get('/',ctrlMekanlar.anaSayfa);
-//ile metot url'ye bağlanıyor
-const anaSayfa= function(req,res) { 
-  res.render('anasayfa',{'title':'Anasayfa'});
+var apiSecenekleri = {
+  sunucu:"https://mekanbul.sevvalbdl.repl.co",
+  apiYolu:"/api/mekanlar/",
+};
+var mesafeyiFormatla = function(mesafe){
+  var yeniMesafe, birim;
+  if(mesafe>1){
+    yeniMesafe = parseFloat(mesafe).toFixed(1);
+    birim = " km";
+  }
+  else{
+    yeniMesafe = parseInt(mesafe*1000,10);
+    birim = " m";
+  }
+  return yeniMesafe + birim;
 }
-//module.exports=router;
 
-//mekanBilgisi controller metodu
-//index.js dosyasındaki router.get('/',ctrlMekanlar.mekanBilgisi);
-//ile metot urly'ye bağlanıyor 
-const mekanBilgisi= function(req,res){
-  res.render('mekanbilgisi',{'title':'Mekan Bilgisi'});
+var anaSayfaOlustur = function(res,mekanListesi){
+  var mesaj;
+  if(!(mekanListesi instanceof Array)){
+    mesaj = "API HATASI: Birşeyler ters gitti.";
+    mekanListesi=[];
+  }
+  else{
+    if(!mekanListesi.length){
+      mesaj="Civarda herhangi bir mekan yok.";
+    }
+  }
+  res.render("anasayfa",{
+    baslik:"Anasayfa",
+    sayfaBaslik:{
+    siteAd:"Mekanbul",
+    slogan:"Mekanları Keşfet",
+  },
+  mekanlar:mekanListesi,
+  mesaj:mesaj,
+  });
 }
-//module.exports=router;
+const anaSayfa = function (req, res) {
+  axios.get(apiSecenekleri.sunucu + apiSecenekleri.apiYolu,{
+    params:{
+      enlem:req.query.enlem,
+      boylam:req.query.boylam,
+    },
+  }).then(function(response){
+    var i,mekanlar;
+    mekanlar = response.data;
+    for (i=0;i<mekanlar.length;i++){
+      mekanlar[i].mesafe=mesafeyiFormatla(mekanlar[i].mesafe);
+    }
+    anaSayfaOlustur(res,mekanlar);
+  }).catch(function(hata){
+    anaSayfaOlustur(res,hata);
+  });
+};
+var detaySayfasiOlustur = function(res,mekanDetaylari){
+  mekanDetaylari.koordinat={
+    "enlem": mekanDetaylari.koordinat[0],
+    "boylam": mekanDetaylari.koordinat[1],
+  }
+  res.render('mekanbilgisi',
+  {
+    mekanBaslik: mekanDetaylari.ad,
+    mekanDetay: mekanDetaylari
+  });
+};
+var hataGoster = function(res,hata){
+  var mesaj;
+  if(hata.response.status=404){
+    mesaj= "404, Sayfa bulunamadı!";
+  }
+  else{
+    mesaj = hata.response.status + " hatası";
+  }
+  res.status(hata.response.status)
+  res.render('error', {
+    "mesaj":mesaj
+  });
+};
 
-//yorumEkle controller metodu 
-//index.js dosyasındaki router.get('/',ctrlMekanlar.yorumEkle);
-//ile metot url^ye bağlanıyor 
-const yorumEkle= function(req,res){
-  res.render('yorumekle',{'title':'Yorum Sayfası'});
-}
-//module.exports=router;
+const mekanBilgisi = function (req, res) {
+  axios
+  .get(apiSecenekleri.sunucu + apiSecenekleri.apiYolu + req.params.mekanid)
+  .then(function(response){
+    detaySayfasiOlustur(res,response.data);
+  })
+  .catch(function(hata){
+    hataGoster(res,hata);
+  })
+};
 
-//metotları kullanmak üzere dış dünyaya aç
-//diğer dosyalardan require ile alabilmemizi sağlayacak
+
+const yorumEkle = function (req, res, next) {
+  res.render("yorumekle", { title: "Yorum Ekle" });
+};
+
 module.exports = {
-   anaSayfa,
-   mekanBilgisi,
-   yorumEkle
+  anaSayfa,
+  mekanBilgisi,
+  yorumEkle,
+  anaSayfaOlustur,
+  mesafeyiFormatla
 };

@@ -1,62 +1,58 @@
 extends layout
+include fonksiyonlar/yildiz
+include fonksiyonlar/tarihformat
 block content
-  .row.page-header 
-    .col-lg-12 
-      h1 Starbucks 
-  .row 
-    .col-xs-12.col-md-12 
-      .row 
-        .col-xs-12.col-sm-6 
-          p.rating  
-            span.glyphicon.glyphicon-star 
-            span.glyphicon.glyphicon-star 
-            span.glyphicon.glyphicon-star 
-            span.glyphicon.glyphicon-star 
-            span.glyphicon.glyphicon-star-empty 
-          p Centrum Garden AVM
-          .panel.panel-primary 
-            .panel-heading 
-              h2.panel-title Açılış Saatleri 
-            .panel-body 
-              p 
-                | Pazartesi-Cuma: 7:00-23:00
-              p 
-                | Cumartesi-Pazar: 9:00-22:00
-          .panel.panel-primary 
-            .panel-heading 
+  .row.page-header
+    .col-lg-12
+      h1= mekanBaslik
+  .row
+    .col-xs-12.col-md-12
+      .row
+        .col-xs-12.col-sm-6
+          p.rating
+            +puanOlustur(mekanDetay.puan)
+          p= mekanDetay.adres
+          .panel.panel-primary
+            .panel-heading
+              h2.panel-title Açılış Saatleri
+            .panel-body
+              each saat in mekanDetay.saatler
+                p 
+                  | #{saat.gunler}:&nbsp;
+                  if (saat.kapali)
+                    | Kapalı
+                  else 
+                    | #{saat.acilis}-#{saat.kapanis}
+          .panel.panel-primary
+            .panel-heading
               h2.panel-title Neler Var?
-            .panel-body 
-              span.label.label-warning Dünya Kahveleri 
-              | &nbsp;
-              span.label.label-warning Kekler 
-              | &nbsp;
-              span.label.label-warning Pastalar 
-              | &nbsp;
-        .col-xs-12.col-sm-6 
+            .panel-body
+              each imkan in mekanDetay.imkanlar
+                span.label.label-warning= imkan
+                | &nbsp;
+        .col-xs-12.col-sm-6
           .panel.panel-primary 
-            .panel-heading 
+            .panel-heading
               h2.panel-title Konum Bilgisi 
             .panel-body 
-              -var enlem=37.78
-              -var boylam=30.56
+              -var enlem=mekanDetay.koordinat.enlem
+              -var boylam=mekanDetay.koordinat.boylam
               img.img-responsive.img-rounded(src='http://maps.googleapis.com/maps/api/staticmap?center='+enlem+','+boylam+'&zoom=12&size=600x400&markers='+enlem+','+boylam+'&key=AIzaSyCmmKygTpBzHGOZEciJpAdxC9v_tWHagnE')
-  .row 
-    .col-xs-12   
-      .panel.panel-primary 
-        .panel-heading 
-          a.btn.btn-default.pull-right(href='/mekan/yorum/yeni') Yorum Ekle 
-          h2.panel-title Müşteri Yorumları 
-        .panel-body.review-container 
-          .row 
-            .review 
-              .well.well-sm.review-header 
-                span.rating 
-                span.glyphicon.glyphicon-star 
-                span.glyphicon.glyphicon-star 
-                span.glyphicon.glyphicon-star 
-                span.glyphicon.glyphicon-star 
-                span.glyphicon.glyphicon-star-empty 
-                span.review-author Büşra Bakkal 
-                small.reviewTimestamp &nbsp; 13 Ekim 2022
-              .col-xs-12 
-                p Kahveler güzel.
+    .row
+      .col-xs-12 
+        .panel.panel-primary
+          .panel-heading
+            a.btn.btn-default.pull-right(href='/mekan/yorum/yeni') Yorum Ekle
+            h2.panel-title Müşteri Yorumları
+          .panel-body.review-container
+            each yorum in mekanDetay.yorumlar
+              .row 
+                .review 
+                  .well.well-sm.review-header
+                    span.rating
+                      +puanOlustur(yorum.puan)
+                    span.review-author= yorum.yorumYapan
+                    small.reviewTimesTamp &nbsp;
+                    +tarihFormatla(yorum.tarih)
+                  .col-xs-12
+                    p= yorum.yorumMetni
