@@ -1,4 +1,4 @@
-const database = 'mekanbul-1';
+const database = 'mekanbul';
 use(database);
 db.mekanlar.updateOne({"ad":"Starbucks"},
   {$push: {"yorumlar": 
