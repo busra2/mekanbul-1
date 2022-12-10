@@ -1,5 +1,5 @@
 # Mekanbul Replit Adresi 
-https://mekanbul-1-2.busrakemter.repl.co/?enlem=37.8&boylam=30.5
+http://localhost:3000/?enlem=37.8&boylam=30.5
 
 
 # MekanBul REST API Adresleri
