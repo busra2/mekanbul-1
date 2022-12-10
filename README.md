@@ -1,5 +1,5 @@
 # Mekanbul Replit Adresi 
-http://localhost:3000/?enlem=37.8&boylam=30.5
+
 
 
 # MekanBul REST API Adresleri
