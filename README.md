@@ -8,7 +8,7 @@
 >- **Normal Kullanıcı:** Konuma göre mekan listeleme, mekan detaylarını görebilme
 >- **Kayıtlı Kullanıcı:** Mekana yorum yapabilme, profil görüntüleme, profil güncelleme, şifre yenileme
 >- **Admin:** Tüm mekanları listeleme, mekan ekleme, mekan silme, mekan güncelleme
->- **Varsayılan Rol:** Kullanıcı. Kullanıcılar koleksiyonuna giderek kayıt olduğunuz kullanıcıyı bulup rolünü "admin olarak değiştirerek admin özelliklerine erişebilirsiniz.
+
 
 # API Metotları
 
